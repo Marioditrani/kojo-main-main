@@ -1,11 +1,11 @@
 <script>
 import { state } from "../state.js";
 import axios from "axios";
-import sh from '../components/SHeader.vue'
+
 
 export default {
-  components:{sh},
-  
+  components: {},
+
   data() {
     return {
       state,
@@ -16,17 +16,17 @@ export default {
 
       name: "",
       phone: "",
-      idate:'',
+      idate: '',
       timeSlot: "",
       message: "",
       nperson: 0,
-      
+
       nameError: "",
       phoneError: "",
       timeError: "",
       dateError: "",
       npersonError: "",
-      
+
       isValid: true,
       loading: false,
       succes: false,
@@ -40,24 +40,24 @@ export default {
       });
 
     },
-    
-    addperson(){
-      if(this.nperson == 30){
+
+    addperson() {
+      if (this.nperson == 30) {
         this.nperson = 30
-      }else{
-        this.nperson ++
+      } else {
+        this.nperson++
       }
     },
-    mperson(){
-      if(this.nperson == 0){
+    mperson() {
+      if (this.nperson == 0) {
         this.nperson = 0
-      }else{
-        this.nperson --
+      } else {
+        this.nperson--
       }
     },
 
     order_validations() {
-       this.isValid = true;
+      this.isValid = true;
 
       if (!this.name) {
         this.nameError = "Il campo 'nome' è richiesto!";
@@ -81,7 +81,7 @@ export default {
       }
 
       if (!this.idate) {
-        this.dateError = "Seleziona una data!" ;
+        this.dateError = "Seleziona una data!";
         this.isValid = false;
       }
       if (!this.timeSlot) {
@@ -129,89 +129,89 @@ export default {
         this.phone = "";
         this.idate = "";
         this.timeSlot = "";
-        this.message= "";
-        this.nperson= "";
+        this.message = "";
+        this.nperson = "";
 
-        this.state.arrId= [];
-        this.state.arrQt= [];
-        this.state.arrCart= [];
-        this.arrTimesSlot= [];
-        this.arrTimesSlotApi= [];
+        this.state.arrId = [];
+        this.state.arrQt = [];
+        this.state.arrCart = [];
+        this.arrTimesSlot = [];
+        this.arrTimesSlotApi = [];
       }
     },
 
 
 
-    inputTime(time, id){
+    inputTime(time, id) {
       this.arrTimesSlot.forEach((element, i) => {
-        if(element.id == 'active'){
+        if (element.id == 'active') {
           element.id = i + 1
         }
-        
+
       });
       this.arrTimesSlot.forEach((element, i) => {
-        if(element.id == id){
+        if (element.id == id) {
           element.id = 'active'
         }
-        
+
       });
       this.timeSlot = time;
-      
+
     },
 
-    checkData(i){
+    checkData(i) {
       let oggi = new Date()
       let di = new Date(i)
-      
-      if(di.getDate() == oggi.getDate() && di.getMonth() == oggi.getMonth() && di.getFullYear() == oggi.getFullYear() ){
-        this.arrTimesSlot =[];
+
+      if (di.getDate() == oggi.getDate() && di.getMonth() == oggi.getMonth() && di.getFullYear() == oggi.getFullYear()) {
+        this.arrTimesSlot = [];
         this.getTimesSlots()
         console.log('oggi')
-        
+
         let oraOggi = parseInt(oggi.getHours());
         let minOggi = parseInt(oggi.getMinutes());
-        
+
         console.log('foreach')
-        
+
         this.arrTimesSlotApi.forEach(element => {
-          let ora     = parseInt(element.time_slot.slice(0,2));
-          let min     = parseInt(element.time_slot.slice(3,5));
-          
-          
-          if(oraOggi == ora){
+          let ora = parseInt(element.time_slot.slice(0, 2));
+          let min = parseInt(element.time_slot.slice(3, 5));
+
+
+          if (oraOggi == ora) {
             console.log(min)
-            if((min - (this.DeltaMinuti + minOggi)) > 0 ){
+            if ((min - (this.DeltaMinuti + minOggi)) > 0) {
               this.arrTimesSlot.push(element)
             }
           }
-          else if(ora == (oraOggi + 1)){
-            if((minOggi - 60 + min) > this.DeltaMinuti)
+          else if (ora == (oraOggi + 1)) {
+            if ((minOggi - 60 + min) > this.DeltaMinuti)
+              this.arrTimesSlot.push(element)
+          }
+          else if (oraOggi < ora) {
             this.arrTimesSlot.push(element)
           }
-          else if(oraOggi < ora){
-            this.arrTimesSlot.push(element)
-          }
-          
+
         });
       }
-      else if(Date.parse(di) > Date.now()){
+      else if (Date.parse(di) > Date.now()) {
         this.arrTimesSlot = [];
         console.log('domani')
-        this.arrTimesSlot= this.state.defaultTimes
-        
+        this.arrTimesSlot = this.state.defaultTimes
+
       }
       else {
-        
+
         this.arrTimesSlot = [];
         console.log('scrivi un giorno accettabile')
-        
-        
+
+
       }
-      
+
     }
   },
   created() {
-   
+
     this.getTimesSlots();
 
     this.state.actvPage = 6;
@@ -220,74 +220,65 @@ export default {
 </script>
 
 <template>
-  <sh/>
   <div class="menu">
     <div class="top-menu">
       <h1>Prenota il tuo tavolo</h1>
     </div>
-   
+
 
     <div class="form" id="orderForm">
       <div class="sec-form">
-          <label for="name">Nome e Cognome</label>
-          <input v-model="name" type="text" placeholder="Nome e Cognome" id="name" />
-          <div v-if="nameError" id="nameError">{{ nameError }}</div>
-        </div>
+        <label for="name">Nome e Cognome</label>
+        <input v-model="name" type="text" placeholder="Nome e Cognome" id="name" />
+        <div v-if="nameError" id="nameError">{{ nameError }}</div>
+      </div>
       <div class="sec-form">
-           <label for="phone">Numero di telefono</label>
-            <input
-            v-model="phone"
-            type="text"
-            onkeypress="return /[0-9]/i.test(event.key)"
-            placeholder="N° telefono"
-            id="phone"
-          />
-          <div v-if="phoneError" id="phoneError">{{ phoneError }}</div>
+        <label for="phone">Numero di telefono</label>
+        <input v-model="phone" type="text" onkeypress="return /[0-9]/i.test(event.key)" placeholder="N° telefono"
+          id="phone" />
+        <div v-if="phoneError" id="phoneError">{{ phoneError }}</div>
       </div>
-      
-        <div class="sec-form nperson">
-          <label for="nperson">Numero ospiti</label>
-          <div class="person">
-            <div class="meno-person" @click="mperson">-</div>
-            <input class="valueperson" v-model="nperson" type="text"
-            onkeypress="return /[0-9]/i.test(event.key)">
-            <div class="add-person" @click="addperson" >+</div>
-          </div>
-          <div v-if="npersonError" id="npersonError">{{ npersonError }}</div>
+
+      <div class="sec-form nperson">
+        <label for="nperson">Numero ospiti</label>
+        <div class="person">
+          <div class="meno-person" @click="mperson">-</div>
+          <input class="valueperson" v-model="nperson" type="text" onkeypress="return /[0-9]/i.test(event.key)">
+          <div class="add-person" @click="addperson">+</div>
         </div>
-      
-    <div class="sec-form">
-      <span>Seleziona una data </span>
-      <input type="date" v-model="idate" @input="checkData(idate)" id="">
+        <div v-if="npersonError" id="npersonError">{{ npersonError }}</div>
+      </div>
+
+      <div class="sec-form">
+        <span>Seleziona una data </span>
+        <input type="date" v-model="idate" @input="checkData(idate)" id="">
         <div v-if="dateError" id="dateError">{{ dateError }}</div>
-            <div class="center-orari">
-              <div v-for="time in arrTimesSlot" :key="time.time_slot" >
-                <div v-if="time.visible" class="badge" :class="time.id == 'active' ? 'actv' : ''" @click="inputTime(time.time_slot, time.id)"  >{{ time.time_slot }} </div>
-              </div>
-            </div>
-            <div v-if="timeError" id="timeError">{{ timeError }}</div>
+        <div class="center-orari">
+          <div v-for="time in arrTimesSlot" :key="time.time_slot">
+            <div v-if="time.visible" class="badge" :class="time.id == 'active' ? 'actv' : ''"
+              @click="inputTime(time.time_slot, time.id)">{{ time.time_slot }} </div>
+          </div>
         </div>
-      <div>
-        
+        <div v-if="timeError" id="timeError">{{ timeError }}</div>
       </div>
-      
+      <div>
+
+      </div>
+
       <div class="sec-form">
         <span>Lascia una nota per il ristorante</span>
         <textarea cols="30" rows="10" v-model="message"></textarea>
       </div>
       <div class="condizioni">
-          <div class="top">
-            <input type="checkbox">
-            <p>Accetta i termini e le condizioni per il trattamento dei dati</p>
+        <div class="top">
+          <input type="checkbox">
+          <p>Accetta i termini e le condizioni per il trattamento dei dati</p>
 
-          </div>
-          <div v-if="nameError" id="nameError">{{ nameError }}</div>
         </div>
+        <div v-if="nameError" id="nameError">{{ nameError }}</div>
+      </div>
 
-      <button v-if="!loading"
-        class="btn-send"           
-        @click.prevent="sendOrder"       
-        data-action='submit'>conferma</button>
+      <button v-if="!loading" class="btn-send" @click.prevent="sendOrder" data-action='submit'>conferma</button>
 
       <!--<span v-if="!loading" @click="sendOrder()" class="btn">Invia</span>-->
     </div>
@@ -305,142 +296,160 @@ export default {
 
 <style scoped lang="scss">
 @use "../assets/styles/general.scss" as *;
-.menu::-webkit-scrollbar{
-      
-      width: 10px;
-      height: 10px;
-      
-  }
+
+.menu::-webkit-scrollbar {
+
+  width: 10px;
+  height: 10px;
+
+}
 
 .menu::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-    background: $c-header;
-    
+  border-radius: 20px;
+  background: $c-header;
+
 }
+
 .menu::-webkit-scrollbar-track {
-    border-radius: 20px;
-    background: rgba(52, 4, 7, 0.786);
-    
+  border-radius: 20px;
+  background: rgba(52, 4, 7, 0.786);
+
 }
+
 .menu::-webkit-scrollbar-thumb:hover {
-    border-radius: 20px;
-    background-color: $c-nav-link;
-    border: 2px solid $c-header;
-    
+  border-radius: 20px;
+  background-color: $c-nav-link;
+  border: 2px solid $c-header;
+
 }
-.menu{
+
+.menu {
   overflow: auto;
   width: 100%;
-  height: 69%;
+  height: 100%;
+  margin-top: 230px;
   background-color: #270000;
   position: fixed;
-    bottom: 0;
-    left: 0;
-  .top-menu{
-    h1{
+  bottom: 0;
+  left: 0;
+
+  .top-menu {
+    margin-top: 230px;
+    h1 {
       text-align: center;
       text-transform: uppercase;
       padding-top: 2rem;
       font-size: 40px;
-      
+
     }
   }
 }
 
-.actv{
+.actv {
   color: white;
-  background-color: $c-header !important;;
+  background-color: $c-header !important;
+  ;
 }
 
 
-.form{
-  
+.form {
+
   max-width: 450px;
   width: 100%;
-  margin:  2rem auto;
+  margin: 2rem auto;
   @include dfc;
   flex-direction: column;
   gap: 1rem;
-  .sec-form{
-  border-radius: 20px;
-  width: 100%;
-  border: 3px solid white;
-  background-color: #523333;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem;
-  input{
-    background-color: #fe425200;
-    border: 2px solid white;
-    color: white;
-    padding: 1rem;
-    border-radius: .4em
-  }
-    textarea{
-      background-color:#523333;
+
+  .sec-form {
+    border-radius: 20px;
+    width: 100%;
+    border: 3px solid white;
+    background-color: #523333;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+
+    input {
+      background-color: #fe425200;
+      border: 2px solid white;
+      color: white;
+      padding: 1rem;
+      border-radius: .4em
+    }
+
+    textarea {
+      background-color: #523333;
       resize: none;
       border-radius: .4em;
       border: 2px solid white;
       padding: 1rem;
     }
   }
-  .sec-form{
-    .nperson{
+
+  .sec-form {
+    .nperson {
       width: 100%;
     }
   }
-  
-  .person{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 40%;
-      margin: auto;
-      font-size: 20px;
-      
-      gap: .5rem;
-      .meno-person, .add-person{
-        padding: 15px;
-        height: 2rem;
-        width: 2rem;
-        @include dfc;
-        border: 2px solid white;
-        border-radius: 20px;
-      }
-      .valueperson{
-        width: 3rem;
-        height: 3rem;
-        @include dfc;
-        border: 3px solid white;
-        border-radius: 10px;
-        text-align: center;
-        font-size:23px;
-        padding: 5px;
-      }
-      }
-      .btn-send{
-      border: 3px solid white;
-      background-color: #270000;
+
+  .person {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+    margin: auto;
+    font-size: 20px;
+
+    gap: .5rem;
+
+    .meno-person,
+    .add-person {
+      padding: 15px;
+      height: 2rem;
+      width: 2rem;
+      @include dfc;
+      border: 2px solid white;
       border-radius: 20px;
-      max-width: 450px;
-      width: 100%;
-      padding: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 20px;
-      margin-top: 10px
-}
+    }
+
+    .valueperson {
+      width: 3rem;
+      height: 3rem;
+      @include dfc;
+      border: 3px solid white;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 23px;
+      padding: 5px;
+    }
+  }
+
+  .btn-send {
+    border: 3px solid white;
+    background-color: #270000;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 100%;
+    padding: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 20px;
+    margin-top: 10px
+  }
 
 }
-.condizioni{
+
+.condizioni {
   font-size: 15px;
   margin: 10px;
-  .top{
+
+  .top {
     display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -465,6 +474,7 @@ export default {
 .btn_loading {
   cursor: wait;
 }
+
 .tag {
   display: flex;
   gap: 0.4em;
@@ -486,9 +496,11 @@ export default {
   background-color: black;
   border: 2px solid white;
 }
+
 .sub-item-on {
   display: inline-block;
 }
+
 .cart-on {
   margin: 1rem 1rem 3rem;
   @include dfj;
@@ -497,6 +509,7 @@ export default {
   gap: 0.4rem;
   transition: all linear 0.3s;
 }
+
 .carts-on {
   margin: 1rem 1rem 3rem;
   @include dfj;
@@ -505,11 +518,13 @@ export default {
   gap: 0.4rem;
   transition: all linear 0.3s;
 }
+
 .cart-off {
   height: 0%;
   margin: 0;
   transition: all linear 0.3s;
 }
+
 .item-on {
   display: flex;
   justify-content: space-between;
@@ -663,31 +678,32 @@ export default {
 .item:nth-child(6):after {
   color: #ffda77;
 }
-  
-.badge{
+
+.badge {
   border: 2px solid white;
   border-radius: 300px;
   width: 70px;
   text-align: center;
-  padding: 5px ;
+  padding: 5px;
   margin: 5px;
 }
-.badge-off{
+
+.badge-off {
   background-color: rgb(210, 32, 19);
   padding: 5px 10px;
   margin: 5px;
 }
-.orari-container{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 900px;
-}
-.center-orari{
+
+.orari-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   max-width: 900px;
 }
 
-</style>
+.center-orari {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 900px;
+}</style>

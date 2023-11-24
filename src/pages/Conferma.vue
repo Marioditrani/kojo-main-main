@@ -1,10 +1,10 @@
 <script>
 import { state } from "../state.js";
 import axios from "axios";
-import sh from '../components/SHeader.vue'
+
 
 export default {
-  components:{sh},
+  components:{},
   
   data() {
     return {
@@ -226,7 +226,7 @@ export default {
 </script>
 
 <template>
-  <sh/>
+
  <div class="prenota">
     <div class="prenota-cont">
       <img src="../assets/img/crop.png" alt="" class="bacchette">

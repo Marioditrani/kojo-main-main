@@ -27,7 +27,8 @@
 
 .appnav{
   width: 100vw;
-  
+  position: relative;
+  z-index: 200;
 }
 
 .page{

@@ -27,6 +27,7 @@ export default {
 </script>
 
 <template>
+<div class="bg-home">
 
     <div class="home">
         <div class="home-left">
@@ -50,6 +51,7 @@ export default {
             <router-link :to="{ name: 'menu' }" class="btn">Menu</router-link>
         </div>
     </div>
+</div>
 </template>
 
 <style scoped lang="scss">
@@ -87,24 +89,31 @@ export default {
 .home-respo{
     display: none;
 }
-.home {
-    margin-top: 230px;
+.bg-home{
     background-color: #270000;
     width: 100%;
-    display: flex;
+    height: 100%;
+    @include dfc;
+    position: fixed;
+    left: 0;
+    margin-top: 230px;
+}
+.home {
+    overflow: auto;
     
+    width: 100%;
+    display: flex;
+    height: 100vh;
 
     .home-left {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-left: 300px;
+        padding-top: 150px;
+        align-items: flex-start;
+        justify-content: flex-end;
         width: 50%;
         position: relative;
-
         .sushi {
-            
-
+            max-width: 700px;
         }
 
        
@@ -112,9 +121,9 @@ export default {
     }
 
     .home-right {
-        font-size: 25px;
+        font-size: 23px;
         width: 40%;
-        height: 90%;
+        height: 70%;
         padding-top: 70px;
         display: flex;
         flex-direction: column;

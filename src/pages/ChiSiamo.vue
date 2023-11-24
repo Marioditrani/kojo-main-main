@@ -1,9 +1,9 @@
 <script >
   import {state} from '../state.js'
-  import sh from '../components/SHeader.vue'
+
 
   export default {
-    components:{sh},
+    components:{},
 
     data(){
         return{     
@@ -19,41 +19,43 @@
 </script>
 
 <template>
- 
-  <div class="about">
-    <img src="../assets/img/crop.png" alt="" class="bacchette">
-    <div class="main-about">
-      <div class="top-about">
-        <img src="../assets/img/cuoco-sushi1.png" alt="" class="cuoco1">
-        <h1>Chi  siamo?</h1>
-      </div>
-      <div class="post-container">
-        <div class="post">
-          
-          <div class="text">
-            <h4>IL NOSTRO MODO DI CUCINARE</h4>
-            <p>
-              Esplorate le radici profonde della cucina cinese attraverso piatti come il "Jiaozi", ravioli tradizionali cinesi, riempiti di sapori autentici che risalgono a generazioni. Dall'agrodolce.
-            </p>
-          </div>
-          <img src="../assets/img/cuochi-sushi-21.png" alt="">
-        </div>
-        <div class="post">
-          
-          <div class="text">
-            <h4>IL NOSTRO MODO DI CUCINARE</h4>
-            <p>
-              Esplorate le radici profonde della cucina cinese attraverso piatti come il "Jiaozi", ravioli tradizionali cinesi, riempiti di sapori autentici che risalgono a generazioni. Dall'agrodolce.
-            </p>
-          </div>
-          <img src="../assets/img/cuochi-sushi-21.png" alt="">
-        </div>
-        
-        
-      </div>
-      <Appfooter />
+ <div class="bg-chisiamo">
+
+   <div class="about">
+     <img src="../assets/img/crop.png" alt="" class="bacchette">
+     <div class="main-about">
+       <div class="top-about">
+         <img src="../assets/img/cuoco-sushi1.png" alt="" class="cuoco1">
+         <h1>Chi  siamo?</h1>
+       </div>
+       <div class="post-container">
+         <div class="post">
+           
+           <div class="text">
+             <h4>IL NOSTRO MODO DI CUCINARE</h4>
+             <p>
+               Esplorate le radici profonde della cucina cinese attraverso piatti come il "Jiaozi", ravioli tradizionali cinesi, riempiti di sapori autentici che risalgono a generazioni. Dall'agrodolce.
+             </p>
+           </div>
+           <img src="../assets/img/cuochi-sushi-21.png" alt="">
+         </div>
+         <div class="post">
+           
+           <div class="text">
+             <h4>IL NOSTRO MODO DI CUCINARE</h4>
+             <p>
+               Esplorate le radici profonde della cucina cinese attraverso piatti come il "Jiaozi", ravioli tradizionali cinesi, riempiti di sapori autentici che risalgono a generazioni. Dall'agrodolce.
+             </p>
+           </div>
+           <img src="../assets/img/cuochi-sushi-21.png" alt="">
+         </div>
+         
+         
+       </div>
+       
+     </div>
     </div>
-</div>
+ </div>
 
    
 
@@ -64,31 +66,36 @@
 @use '../assets/styles/general.scss' as *;
 
 @media (max-width:$bp1) {.btn-menu{display:block;}}
-.main-about::-webkit-scrollbar{
+.about::-webkit-scrollbar{
   width: 10px;
 }
-.main-about::-webkit-scrollbar-thumb {
+.about::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background: $c-header;
 }
-.main-about::-webkit-scrollbar-thumb:hover {
+.about::-webkit-scrollbar-thumb:hover {
   border-radius: 20px;
   background-color: $c-nav-link;
   border: 2px solid $c-header;
     
 }
 
+.bg-chisiamo{
+  height: 100%;
+  margin-top: 230px;
+  width: 100%;
+}
 .about{
   background-color: #270000;
   overflow: hidden;
   display: flex;
   flex-direction:column;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-
   width: 100%;
-
+  height: 100%;
+  margin-top: 230px;
+  position: fixed;
+  overflow: auto;
+  top: 0;
   .bacchette{
     max-width: 200px;
     position: fixed;
@@ -100,10 +107,10 @@
   .main-about{
     margin:auto;
     width: 70%;
-    overflow: auto;
+    
     padding: 2rem;
-    height: 100%;
-
+   
+   
     .top-about{
       display: flex;
       h1{

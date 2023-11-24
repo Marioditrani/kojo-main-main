@@ -1,10 +1,10 @@
 <script >
   import {state} from '../state.js';
   import axios from 'axios'
-  import sh from '../components/SHeader.vue'
+  
 
   export default {
-    components:{sh},
+    components:{},
 
     data(){
         return{     
@@ -133,7 +133,7 @@
         });
       
         if(!check){
-          this.state.arrCart.push(newitem);
+          this.state.arrCart.p(newitem);
           this.state.arrId.push(id)
           this.state.arrQt.push(counter)
         }
@@ -205,8 +205,6 @@
 <!-- :class="state.sideCartValue ?  'sub-item-off' : 'sub-item-on tag'" -->
 <template>
   <div class="prenota">
-   <sh class="sh"/>
-    
     <div class="prenota-cont">
       <div class="top-respo">
         <h1>Prenota il tuo Asporto</h1>
@@ -316,11 +314,6 @@
 }
 .hd{box-shadow: 10px 10px 10px black; }
 
-.sh{
-  position: absolute;
-  top: 0;
-  right: 0;
-}
 .prenota{
   overflow: hidden;
   display: flex;
@@ -329,14 +322,16 @@
   bottom: 0;
   left: 0;
   width: 100vw;
-
+  margin-top: 230px;
+  height: 100%;
   .prenota-cont{
     width: 100vw;
     background-color: #270000;
     overflow: auto;
     height: 100%;
     padding: 1rem 1rem ;
-
+    height: 100%;
+    margin-top: 230px;
     .top-respo{
       display: none;
     }

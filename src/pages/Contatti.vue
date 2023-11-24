@@ -1,9 +1,9 @@
 <script >
   import {state} from '../state.js'
-  import sh from '../components/SHeader.vue'
+
 
   export default {
-    components:{sh},
+    components:{},
     data(){
         return{     
             state,
@@ -19,7 +19,6 @@
 </script>
 
 <template>
-  <sh/>
   <div class="contatti">
     <div class="cont">
       <div class="card1">
@@ -112,14 +111,15 @@ img{
   position: fixed;
     bottom: 0;
     left: 0;
-    height: 69%;
+    height: 100%;
     width: 100%;
+    margin-top: 230px;
 
   .cont{
-    
+    margin-top: 230px;
     width: 90%;
     height: 100%;
-    margin: auto;
+    
 
     .card1{
       padding-top: 50px;

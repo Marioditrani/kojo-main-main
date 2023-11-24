@@ -1,11 +1,10 @@
 <script >
   import {state} from '../state.js';
   import axios from 'axios'
-  import sh from '../components/SHeader.vue'
   import AppNav from '../components/AppNav.vue'
 
   export default {
-    components:{AppNav, sh},
+    components:{AppNav, },
 
     data(){
         return{     
@@ -95,7 +94,7 @@
 </script>
 
 <template>
-  <sh/>
+
   <div class="menu">
     <div class="menu-cont">
       <div class="menu-left">
@@ -141,7 +140,7 @@
     </div>
     
   </div>
-  <Appfooter />
+
 </template>
 
 <style scoped lang="scss">
@@ -182,17 +181,16 @@
   top: 0;
   left: 0;
   flex-wrap: wrap;
-
+  height: 100%;
+  margin-top: 230px;
+  
   .menu-cont{
     overflow: auto;
     display: flex;
     background-color: #270000;
-    position: fixed;
-    bottom: 0;
-    height: 70%;
     width: 100%;
     padding: 1rem 1rem ;
-    
+    height: 100%;
     .menu-left{
       width: 10%;
       display: flex;
@@ -209,7 +207,7 @@
     .menu-right{
       width: 90%;
       .menu-top{
-        height: 30%;
+        height: 20%;
         display: flex;
         justify-content: space-between;
         h1{
@@ -228,7 +226,6 @@
         
       }
       .menu-bottom{
-      height: 72%;
       @include dfc;
       flex-wrap: wrap;
       gap: 1rem;
