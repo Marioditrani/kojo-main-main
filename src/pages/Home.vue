@@ -88,6 +88,8 @@ export default {
 }
 .home-respo{
     display: none;
+    overflow: scroll;
+    
 }
 .bg-home{
     background-color: #270000;
@@ -151,87 +153,97 @@ export default {
 }
 
 
-// @media (max-width:1600px) {
-    
-//     .sushi {
-            
-//         min-width: 800px;
+@media (max-width: 1300px) {
+    .home{
+        display: none;
+    }
+    .home-respo{
+        display: block;
+        height: 100%;
+        width: 80%;
+        padding: 1rem 0 15rem 0;
+        .main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            img{
+                max-width: 700px;
+            }
+            .btn {
+            width: 200px;
+            padding: 15px 0;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            font-size: 25px;
+            background-color: #523333;
+            border: 5px solid white;
+            }
+        }
+    }
+}
 
-//         }
-// }
-// @media (max-width:1350px) {
-    
-//     .home{
-//         h1{
-//             font-size: 45px;
-//         }
-//         .home-left{
-//             padding-left: 100px;
-//             .sushi {
-                    
-//                 min-width: 700px;
+@media (max-width: 1200px){
+    .home-respo{
+        .main{
+            gap: 23px;
+            img{
+                max-width: 600px;
+            }
+        }
+    }
+}
+@media (max-width: 670px){
+    .home-respo{
         
-//                 }
-//         }
-//     }
-// }
-// @media (max-width:1000px) {
-    
-//     .home{
-//         h1{
-//             font-size: 40px;
-//         }
-//         p{
-//             font-size: 15px!important;
-
-//         }
-//         .home-left{
-//             padding-left: 100px;
-//             .sushi {
-                    
-//                 min-width: 600px;
-        
-//                 }
-//         }
-//     }
-// }
-
-// @media (max-width:900px) {
-    
-//     .home{
-//         display: none;
-//     }
-//     .home-respo{
-//         background-color: #270000;
-//         height: 70%;
-//         width: 100%;
-//         margin: auto;
-//         position: fixed;
-//         bottom: 0;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         text-align: center;
-        
-//         .main{
-//             width: 90%;
-//             margin: auto;
-//             display: flex;
-//             flex-direction: column;
-//             align-items: center;
-//             justify-content: center;
-//             .sushi-respo{
-//                 width: 500px;
-//             }
-//         }
-
-//         .btn{
-//             margin-top: 2rem;
-//         }
-//     }
-// }
-
-
-
-
+        .main{
+            gap: 23px;
+            img{
+                max-width: 500px;
+            }
+        }
+    }
+}
+@media (max-width: 470px){
+    .home-respo{
+        overflow-x: hidden;
+        .main{
+            gap: 26px;
+            width: 100%;
+            img{
+                max-width: 350px;
+            }
+        }
+    }
+}
+@media (max-width: 370px) {
+    .home-respo{
+        .main{
+            gap: 35px;
+            img{
+                max-width: 300px;
+            }
+            h1{
+                font-size: 27px;
+            }
+            p{
+                font-size: 15px;
+            }
+        }
+        .btn {
+            width: 150px!important;
+            padding: 10px 0;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            font-size: 20px!important;
+            background-color: #523333;
+            border: 5px solid white;
+            }
+    }
+}
 </style>

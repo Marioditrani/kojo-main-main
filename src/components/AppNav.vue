@@ -394,6 +394,38 @@
   }
 }
 
+@media (max-width: 600px){
+  .nav{
+    .left-nav{
+        padding-left:0px!important;
+      
+    }
+  }
+}
+@media (max-width: 450px){
+  .nav-mb{
+   
+    .btn-menu{
+      right: 20px!important;
+    }
+  }
+}
+@media (max-width: 400px){
+  .nav{
+    .left-nav{
+      img{
+        width: 200px;
+      }
+    }
+  }
+  .nav-mb{
+   
+    .btn-menu{
+      right: 20px!important;
+    }
+  }
+}
+
 </style>
 
 
