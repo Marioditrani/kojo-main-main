@@ -217,6 +217,7 @@
   }
 
   .nav-mb{
+    display: none;
     position: relative;
     z-index: 5315;
     background-color: #523333;
@@ -388,16 +389,9 @@
       display: none;
     }
   }
-  .nav-mb-on{
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 10;
-  background-color: #270000;
-  width: 100%;
-  height: 100%;
-  transition: all .3s linear;
-}
+  .nav-mb{
+    display: block!important;
+  }
 }
 
 </style>
