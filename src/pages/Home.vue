@@ -98,14 +98,13 @@ export default {
     @include dfc;
     position: fixed;
     left: 0;
-    margin-top: 230px;
+    margin-top: 150px;
 }
 .home {
     overflow: auto;
-    
     width: 100%;
     display: flex;
-    height: 100vh;
+    
 
     .home-left {
         display: flex;

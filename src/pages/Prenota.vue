@@ -133,7 +133,7 @@
         });
       
         if(!check){
-          this.state.arrCart.p(newitem);
+          this.state.arrCart.push(newitem);
           this.state.arrId.push(id)
           this.state.arrQt.push(counter)
         }
@@ -216,24 +216,22 @@
           <h1>Prenota il tuo Asporto</h1>
         </div>
         <div class="right-top">
-          <div class="one-category" @click="catopen(catinput)" :class="catinput ?  'cat-off': 'cat-on'">
+          <div class="one-category" @click="catopen(catinput)" :class="catinput ?  'cat-off': ''">
               <span>categorie</span>
             </div>
-          <div class="categorie"   :class="catinput ? 'cat-on': 'cat-off'">
+          <div class="categorie"   :class="catinput ? '': 'cat-off'">
             <div v-for="cat in arrCategory" :key="cat.id" class="category" :class="actvcat == cat.id ? 'category-on' : '' " @click="changeCategory(cat.id)"> 
               <span @click="catopen(catinput)" :class="actvcat == cat.id ? 'span-on' : '' ">{{ cat.name }}</span>
             </div>
           </div>
-          <div class="cart-close" @click="cartopen(cartinput)" :class="cartinput ?  'cat-off': 'cat-on'">
+          <div class="cart-close" @click="cartopen(cartinput)" :class="cartinput ?  'cat-off': ''">
             <div class="img-cart">
               <svg   xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg>
             </div>
-            
           </div>
-          <div class="cart" :class="cartinput ?  'cat-on': 'cat-off'">
+          <div class="cart" :class="cartinput ?  '': 'cat-off'">
             <div class="img-cartclose">
-              <svg xmlns="http://www.w3.org/2000/svg"  @click="cartopen(cartinput)" :class="cartinput ?  'cat-on': 'cat-off'"    width="30" height="30" fill="currentColor" class="bi bi-cart-x-fill" viewBox="0 0 16 16"><path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7.354 5.646 8.5 6.793l1.146-1.147a.5.5 0 0 1 .708.708L9.207 7.5l1.147 1.146a.5.5 0 0 1-.708.708L8.5 8.207 7.354 9.354a.5.5 0 1 1-.708-.708L7.793 7.5 6.646 6.354a.5.5 0 1 1 .708-.708z"/></svg>
-
+              <svg xmlns="http://www.w3.org/2000/svg"  @click="cartopen(cartinput)" :class="cartinput ?  '': 'cat-off'"    width="30" height="30" fill="currentColor" class="bi bi-cart-x-fill" viewBox="0 0 16 16"><path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7.354 5.646 8.5 6.793l1.146-1.147a.5.5 0 0 1 .708.708L9.207 7.5l1.147 1.146a.5.5 0 0 1-.708.708L8.5 8.207 7.354 9.354a.5.5 0 1 1-.708-.708L7.793 7.5 6.646 6.354a.5.5 0 1 1 .708-.708z"/></svg>
             </div>
             <div :class="state.sideCartValue ? 'content-cart' : 'ccoff'" >
               <div class="span" v-if="!state.arrCart.length && !state.sideCartValue">Il carrello è vuoto</div>
@@ -244,7 +242,7 @@
                 <svg :class="state.sideCartValue ?  'sub-item-off' : 'sub-item-on'" @click="removeItem(item.title)"  style="color: white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="current-color" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" fill="white"></path> <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" fill="white"></path> </svg>
               </div>
               <div class="bottom-cart">
-                <router-link :to="{ name: 'conferma' }" v-if="state.arrCart.length && !state.sideCartValue" class="next">Completa ordine</router-link>
+                <router-link :to="{ name: 'conferma' }" v-if="state.arrCart.length && cartinput" class="next">Completa ordine</router-link>
                 <div class="tot">
                   <span>TOTALE</span>
                     {{ getPrice(state.totCart)}}
@@ -532,10 +530,8 @@
    cursor:grab;
    border-radius: 2px;
    transition: all .5s;
-   background-color: $c-footer-nav ;
-   border: 1px solid $c-nav-link;
+   background-color: #D53C3C75 ;
    display: flex;
-   
    justify-content: center;
    align-items: center;
    span {
@@ -558,8 +554,11 @@
 }
 
 .category-on {
+  opacity: 46%;
   
-  background-color: $c-header !important;
+}
+.category2{
+  opacity: 40%;
 }
 .category-on:hover {
   
@@ -642,7 +641,7 @@
     text-align: center;
     border-radius: 20px;
   }
-.content-cart{
+.ccoff{
   width: 10px;
   height: 0;
   padding: 0rem;
@@ -650,7 +649,7 @@
   flex-direction: column;
   transition: all .2s linear ;
 }
-.ccoff{
+.content-cart{
   padding: 2rem;
   padding-top: 4rem;
   height: 100%;
@@ -662,14 +661,14 @@
   
   
 }
-.item-off{
+.item-on{
   opacity: 0;
   display: flex;
   justify-content: space-between;
   transition: all .2s linear .2s;
   
 }
-.item-on{
+.item-off{
   display: flex;
   justify-content: space-between;
   height: auto;
@@ -685,6 +684,12 @@
 }
 
 .cat-off{display: none;}
+
+@media (max-width: 1300px){
+  .prenota-cont{
+    margin-top:150px!important;
+  }
+}
 
 @media (max-width:$bp2) {
   .card-wrap{

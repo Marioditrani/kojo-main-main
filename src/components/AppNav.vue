@@ -113,7 +113,7 @@
     height: 100%;
     @include dfc;
     img{
-      width: 230px;
+      height: 80%;
     }
   }
   .right-nav{
@@ -316,7 +316,7 @@
   z-index: 200;
   .nav-link{
     text-transform: uppercase;
-    line-height: 2rem;
+    line-height: 1rem;
     color: white;
     font-family: 'Gabarito', cursive;
     font-size: 1.8rem;
@@ -385,6 +385,7 @@
 }
 @media (max-width: 1300px) {
   .nav{
+    height: 150px;
     .right-nav{
       display: none;
     }

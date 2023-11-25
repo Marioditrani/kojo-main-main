@@ -270,7 +270,11 @@ img{
     }
   }
 }
-
+@media (max-width: 1300px){
+  .card1{
+    padding-top:0px!important;
+  }
+}
 @media (max-width: $bp3){
   .topinfo{
     .sec-1{

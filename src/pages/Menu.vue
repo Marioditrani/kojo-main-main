@@ -115,7 +115,7 @@
               <span>categorie</span>
             </div>
             <div class="categorie"   :class="catinput ? 'cat-on': 'cat-off'">
-              <div v-for="(cat, i) in arrCategory" class="category" :class="actvcat == cat.id ? 'category-on' : '' " @click="changeCategory(cat.id)" :key="i"> 
+              <div v-for="(cat, i) in arrCategory" class="category" :class="i == 1 ? 'category1' : '',i == 2 ? 'category2' : '' " @click="changeCategory(cat.id)" :key="i"> 
                 <span @click="catopen(catinput)" :class="actvcat == cat.id ? 'span-on' : '' ">{{ cat.name }}</span>
               </div>
             </div>
@@ -369,10 +369,7 @@
    border-radius: 2px;
    transition: all .5s;
    background-color: #D53C3C;
-   opacity: 46%;
-   border: 1px solid $c-nav-link;
    display: flex;
-   
    justify-content: center;
    align-items: center;
    span {
@@ -393,7 +390,12 @@
    transform: rotate(0);
   }
 }
-
+.category1{
+  opacity: 46%;
+}
+.category2{
+  opacity: 40%;
+}
 .category-on {
   
   background-color: $c-header !important;
@@ -421,6 +423,12 @@
 @media (max-width:1650px) {
   .card{
     width: calc((75% - 2rem) / 2)!important;
+  }
+}
+
+@media (max-width: 1300px){
+  .menu{
+    margin-top:150px!important;
   }
 }
 @media (max-width:1100px) {

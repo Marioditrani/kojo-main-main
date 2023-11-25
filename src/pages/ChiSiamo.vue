@@ -197,7 +197,11 @@
     }
   }
 }
-
+@media (max-width: 1300px){
+  .about{
+    margin-top:150px!important;
+  }
+}
 @media (max-width:1100px){
   .main-about{
     width: 90%!important;

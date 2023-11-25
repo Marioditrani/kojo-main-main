@@ -237,10 +237,10 @@ export default {
           
 
         </div>
-        <div :class="state.sideCartValue ? 'content-cart' : 'ccoff'" >
+        <div class="cooff" >
           <div class="span" v-if="!state.arrCart.length && !state.sideCartValue">Il carrello è vuoto</div>
           <router-link :to="{ name: 'prenota' } "  v-if="!state.arrCart.length && !state.sideCartValue">Torna ad ORDINA D'ASPORTO</router-link>
-          <div v-for="item in state.arrCart" :class="state.sideCartValue ?  'item-off' : 'item-on'" :key="item.id">
+          <div v-for="item in state.arrCart"  class="item-on" :key="item.id">
             <div>{{ item.title }}</div>
             <div>{{ getPrice(item.totprice) }}</div>
             <div>x {{ item.counter }}</div>
@@ -335,6 +335,9 @@ export default {
 <style scoped lang="scss">
 @use "../assets/styles/general.scss" as *;
 
+.cooff{
+  padding: 1rem;
+}
 .bottom-cart{
   display: flex;
   justify-content: space-between;
@@ -520,6 +523,7 @@ export default {
   opacity: 1;
   transition: all .2s linear .2s;
   font-size: 20px;
+  padding: 1rem 0rem;
   div{
     width: 45%;
   }
