@@ -209,7 +209,9 @@
   }
 }
 @media (max-width:850px){
-
+  .bacchette{
+    display: none;
+  }
   .about{
 
     .main-about{
@@ -263,15 +265,19 @@
 }
 @media (max-width:430px){
 .bacchette{
-  left: -80px!important;
+  display: none;
 }
 .about{
 
   .main-about{
     
     .top-about{
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 1rem;
       .cuoco1{
-        display: none;
+        
+        
       }
       h1{
         font-size: 50px;
