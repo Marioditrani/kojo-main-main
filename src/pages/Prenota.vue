@@ -772,9 +772,40 @@
   width: 50px!important;
       
   }
-
-
-  
-
+}
+@media (max-width:550px) {
+  .prenota-cont{
+    overflow-x: hidden!important;
+  }
+  .card-wrap{
+    width: 95%!important;
+  }
+  h1{
+    font-size: 40px!important;
+    width: 40%!important;
+  }
+ .bacchette-respo{
+  position: fixed;
+  left: 0;
+  transform: rotateZ(0)!important;
+  transform: scaleX(-1)!important; 
+  }
+  .top-respo{
+    h1{
+      width: 100%!important;
+      text-align: center  !important;
+    }
+  }
+  .one-category{
+    width: 300px!important;
+  }
+  .categorie{
+    max-width: 350px;
+  }
+}
+@media (max-width:550px){
+  .card-wrap{
+   width: 100%!important;
+  }
 }
 </style>

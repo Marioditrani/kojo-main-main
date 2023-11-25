@@ -360,6 +360,7 @@ export default {
   @include dfc;
   flex-direction: column;
   gap: 1rem;
+  
 
   .sec-form {
     border-radius: 20px;

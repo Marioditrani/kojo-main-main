@@ -23,8 +23,7 @@
     <div class="cont">
       <div class="card1">
         <div class="card1-left">
-          <img src="../assets/img/sushi.png" alt="" class="sushi">
-            <img src="../assets/img/crop.png" alt="" class="bac">
+          <img src="../assets/img/sushibac.png" alt="" class="sushi">
         </div>
         <div class="card1-right">
           <h1>CONTATTI</h1>
@@ -116,22 +115,24 @@ img{
     margin-top: 230px;
 
   .cont{
+    margin: auto;
     margin-top: 230px;
-    width: 90%;
+    max-width: 1100px;
     height: 100%;
     
 
     .card1{
       padding-top: 50px;
       display: flex;
+      width: 100%;
       .card1-left{
         width: 50%;
         position: relative;
         
         .sushi{
-          max-width: 400px;
+          width: 500px;
             position: absolute;
-            left: 30%;
+            left: 0%;
             top: 15%;
             
         }
@@ -229,5 +230,84 @@ img{
 
 
 @media (max-width:$bp1) {.btn-menu{display:block;}}
+
+@media (max-width:850px){
+  
+  .card1{
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 4rem;
+    
+    
+    .card1-right{
+      width: 100%!important;
+      text-align: center!important;
+      margin: auto;
+      
+    }
+    .card1-left{
+      width: 100%!important;
+      text-align: center!important;
+      margin: auto;
+      
+    }
+    .sushi{
+      position: relative!important;
+    }
+  }
+
+  .card2{
+    
+    flex-direction: column;
+
+    .card2-left{
+      width: 100%!important;
+    }
+    .card2-right{
+      padding-top: 100px!important;
+      width: 100%!important;
+      
+    }
+  }
+}
+
+@media (max-width: $bp3){
+  .topinfo{
+    .sec-1{
+      width: 90%!important;
+    }
+    
+  }
+  .sushi{
+    width: 400px!important;
+  }
+  .card2{
+    width: 400px;
+    margin: auto;
+
+    
+  }
+}
+
+@media (max-width: 430px){
+  
+  .sushi{
+    width: 350px!important;
+  }
+  .card2{
+    width: 350px;
+    margin: auto;
+  }
+}
+@media (max-width: 430px){
+  
+  .sushi{
+    width: 320px!important;
+  }
+  .card2{
+    width: 320px;
+    margin: auto;
+  }
+}
 
 </style>

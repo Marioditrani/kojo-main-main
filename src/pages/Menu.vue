@@ -191,6 +191,7 @@
     width: 100%;
     padding: 1rem 1rem ;
     height: 100%;
+    overflow-x: hidden;
     .menu-left{
       width: 10%;
       display: flex;
@@ -492,6 +493,32 @@
   .menu-cont{
     width: 100%!important;
   }
+}
+@media (max-width:450px) {
+  .menu-top-left{
+    
+    .menu-top-respo{
+      padding-top: 3rem;
+      text-align: center;
+      
+      
+      h1{
+        font-size: 60px!important;
+      }
+      .bac-respo{
+        margin-right: 25px!important;
+        width: 60px!important;
+      }
+      
+    }
+  }
+  .one-category{
+    width: 300px!important;
+  }
+  .categorie{
+    max-width: 350px;
+  }
+  
 }
 
 </style>

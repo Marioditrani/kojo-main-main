@@ -229,7 +229,6 @@ export default {
 
  <div class="prenota">
     <div class="prenota-cont">
-      <img src="../assets/img/crop.png" alt="" class="bacchette">
       <h1>COMPLETA IL TUO ORDINE</h1>
 
       <div class="cart">
@@ -380,18 +379,14 @@ export default {
 @media (max-width:$bp1) {.prenota{ width: 100% !important;}}
 .prenota{
   background-color: #270000;
-  position: fixed;
-    bottom: 0;
-    left: 0;
   overflow: hidden;
-  height: 69%;
   display: flex;
   flex-direction: column;
   width: 100%;
 
   .prenota-cont{
+    margin-top: 230px;
     overflow: auto;
-    height: 100%;
     padding: 1rem 1rem ;
     h1{
       text-align: center;

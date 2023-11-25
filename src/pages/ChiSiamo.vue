@@ -96,12 +96,12 @@
   position: fixed;
   overflow: auto;
   top: 0;
+  padding-bottom: 250px;
   .bacchette{
     max-width: 200px;
     position: fixed;
     bottom: 150px;
-    left: -30px; 
-
+    left: -30px!important; 
     transform: scaleX(-1); 
   }
   .main-about{
@@ -117,6 +117,10 @@
         font-size: 100px;
         width: 100%;
         text-align: center;
+      }
+      .cuoco1{
+        position: relative;
+          z-index: 1;
       }
     }
     .post-container{
@@ -201,7 +205,7 @@
   }
   .bacchette{
     max-width: 150px!important;
-    left: -50px!important;
+    left: -80px!important;
   }
 }
 @media (max-width:850px){
@@ -213,8 +217,7 @@
       .top-about{
         .cuoco1{
           width: 200px!important;
-          position: relative;
-          z-index: 1;
+        
         }
         h1{
           font-size: 70px;
@@ -223,7 +226,60 @@
     }
   }
 }
+@media (max-width:550px){
 
+  .about{
+
+    .main-about{
+      .post:after{
+        padding: 1rem!important;
+      }
+      .top-about{
+        h1{
+          font-size: 60px;
+        }
+      }
+    }
+  }
+}
+@media (max-width:530px){
+
+.about{
+
+  .main-about{
+    .post:after{
+        padding: 0rem!important;
+      }
+    .top-about{
+      .cuoco1{
+        width: 170px!important;
+      }
+      h1{
+        font-size: 50px;
+      }
+    }
+  }
+}
+}
+@media (max-width:430px){
+.bacchette{
+  left: -80px!important;
+}
+.about{
+
+  .main-about{
+    
+    .top-about{
+      .cuoco1{
+        display: none;
+      }
+      h1{
+        font-size: 50px;
+      }
+    }
+  }
+}
+}
 
 
 
