@@ -108,7 +108,7 @@ export default {
 
     .home-left {
         display: flex;
-        padding-top: 150px;
+        
         align-items: flex-start;
         justify-content: flex-end;
         width: 50%;
@@ -125,10 +125,11 @@ export default {
         font-size: 23px;
         width: 40%;
         height: 70%;
-        padding-top: 70px;
+        
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        gap: 60px;
 
         p {
             width: 70%;

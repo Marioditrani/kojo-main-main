@@ -353,14 +353,12 @@ export default {
 
 
 .form {
-
   max-width: 450px;
   width: 100%;
   margin: 2rem auto;
   @include dfc;
   flex-direction: column;
   gap: 1rem;
-  
 
   .sec-form {
     border-radius: 20px;
