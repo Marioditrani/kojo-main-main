@@ -412,13 +412,7 @@
   }
 }
 @media (max-width: 400px){
-  .nav{
-    .left-nav{
-      img{
-        width: 200px;
-      }
-    }
-  }
+  
   .nav-mb{
    
     .btn-menu{

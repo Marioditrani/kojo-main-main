@@ -17,6 +17,15 @@
         }
     },
     methods:{
+      namecategory(n,i){
+        if(this.categoryId==0 && i==0){
+          return'categorie'
+        }
+        i++
+        if(this.categoryId==i && i!==0){
+          return n
+        }
+      },
       catopen(){
         if (this.catinput){
           this.catinput = 0
@@ -112,15 +121,13 @@
           </div>
           <div class="menu-top-right">
             <div class="one-category" @click="catopen(catinput)" :class="catinput ? 'cat-off': 'cat-on'">
-              <span>categorie</span>
+              <span v-for="(cat,i) in arrCategory" :key="i">{{ namecategory(cat.name, i)}}</span>
             </div>
             <div class="categorie"   :class="catinput ? 'cat-on': 'cat-off'">
-              <div v-for="(cat, i) in arrCategory" class="category" :class="i == 1 ? 'category1' : '',i == 2 ? 'category2' : '' " @click="changeCategory(cat.id)" :key="i"> 
-                <span @click="catopen(catinput)" :class="actvcat == cat.id ? 'span-on' : '' ">{{ cat.name }}</span>
+              <div v-for="(cat, i) in arrCategory" class="category" :class="actvcat == cat.id ? 'category-on' : '', i == 0 ? 'category0' : '',i == 1 ? 'category1' : '', i == 2 ? 'category2' : '',i == 3 ? 'category3' : '',i == 4 ? 'category4' : '',i == 5 ? 'category5' : '',i == 6 ? 'category6' : '' " @click="changeCategory(cat.id)" :key="i"> 
+                <span @click="catopen(catinput)" :class="actvcat == cat.id ? 'span-on' : '' ">{{ cat.name }}</span> 
               </div>
             </div>
-            
-            
           </div>
         </div>
         <div class="menu-bottom">
@@ -382,6 +389,33 @@
     letter-spacing: .1em;
    }
   }
+
+  .category0{
+  background-color:rgba(213, 60, 60, 0.46);
+
+}
+.category1{
+  background-color:rgba(213, 60, 60, 0.40);
+}
+.category2{
+  background-color:rgba(213, 60, 60, 0.34);
+}
+.category3{
+  background-color:rgba(213, 60, 60, 0.28);
+}
+.category4{
+  background-color:rgba(213, 60, 60, 0.22);
+}
+.category5{
+  background-color:rgba(213, 60, 60, 0.16);
+}
+.category6{
+  background-color:rgba(213, 60, 60, 0.10);
+}
+.category-on {
+  
+  background-color: rgba(213, 60, 60,);
+}
   .category:hover {
     
   }
@@ -390,16 +424,7 @@
    transform: rotate(0);
   }
 }
-.category1{
-  opacity: 46%;
-}
-.category2{
-  opacity: 40%;
-}
-.category-on {
-  
-  background-color: $c-header !important;
-}
+
 .category-on:hover {
   
   background-color: $c-header !important;
@@ -469,7 +494,7 @@
     
     .card{
     margin-top: 20rem!important;
-    width: 95% !important;
+    width: 55% !important;
   }
   .menu-left{
     display: none!important;
@@ -500,6 +525,11 @@
   }
   .menu-cont{
     width: 100%!important;
+  }
+
+  .card{
+    
+    width: 95% !important;
   }
 }
 @media (max-width:450px) {

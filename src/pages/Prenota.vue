@@ -20,6 +20,15 @@
         }
     },
     methods:{
+      namecategory(n,i){
+        if(this.categoryId==0 && i==0){
+          return'categorie'
+        }
+        i++
+        if(this.categoryId==i && i!==0){
+          return n
+        }
+      },
       cartopen(){
         if (this.cartinput){
           this.cartinput = 0
@@ -216,14 +225,14 @@
           <h1>Prenota il tuo Asporto</h1>
         </div>
         <div class="right-top">
-          <div class="one-category" @click="catopen(catinput)" :class="catinput ?  'cat-off': ''">
-              <span>categorie</span>
+          <div class="one-category" @click="catopen(catinput)" :class="catinput ? 'cat-off': 'cat-on'">
+              <span v-for="(cat,i) in arrCategory" :key="i">{{ namecategory(cat.name, i)}}</span>
             </div>
-          <div class="categorie"   :class="catinput ? '': 'cat-off'">
-            <div v-for="cat in arrCategory" :key="cat.id" class="category" :class="actvcat == cat.id ? 'category-on' : '' " @click="changeCategory(cat.id)"> 
-              <span @click="catopen(catinput)" :class="actvcat == cat.id ? 'span-on' : '' ">{{ cat.name }}</span>
+            <div class="categorie"   :class="catinput ? 'cat-on': 'cat-off'">
+              <div v-for="(cat, i) in arrCategory" class="category" :class="actvcat == cat.id ? 'category-on' : '', i == 0 ? 'category0' : '',i == 1 ? 'category1' : '', i == 2 ? 'category2' : '',i == 3 ? 'category3' : '',i == 4 ? 'category4' : '',i == 5 ? 'category5' : '',i == 6 ? 'category6' : '' " @click="changeCategory(cat.id)" :key="i"> 
+                <span @click="catopen(catinput)" :class="actvcat == cat.id ? 'span-on' : '' ">{{ cat.name }}</span> 
+              </div>
             </div>
-          </div>
           <div class="cart-close" @click="cartopen(cartinput)" :class="cartinput ?  'cat-off': ''">
             <div class="img-cart">
               <svg   xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg>
@@ -544,6 +553,33 @@
     letter-spacing: .1em;
    }
   }
+
+  .category0{
+  background-color:rgba(213, 60, 60, 0.46);
+
+}
+.category1{
+  background-color:rgba(213, 60, 60, 0.40);
+}
+.category2{
+  background-color:rgba(213, 60, 60, 0.34);
+}
+.category3{
+  background-color:rgba(213, 60, 60, 0.28);
+}
+.category4{
+  background-color:rgba(213, 60, 60, 0.22);
+}
+.category5{
+  background-color:rgba(213, 60, 60, 0.16);
+}
+.category6{
+  background-color:rgba(213, 60, 60, 0.10);
+}
+.category-on {
+  
+  background-color: rgba(213, 60, 60,);
+}
   .category:hover {
     
   }
@@ -553,17 +589,7 @@
   }
 }
 
-.category-on {
-  opacity: 46%;
-  
-}
-.category2{
-  opacity: 40%;
-}
-.category-on:hover {
-  
-  background-color: $c-header !important;
-}
+
 .span-on{
   color: white!important;;
 
