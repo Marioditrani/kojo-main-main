@@ -239,7 +239,7 @@ export default {
         <div v-if="phoneError" id="phoneError">{{ phoneError }}</div>
       </div>
 
-      <div class="sec-form nperson">
+      <div class="sec-form ">
         <label for="nperson">Numero ospiti</label>
         <div class="person">
           <div class="meno-person" @click="mperson">-</div>
@@ -362,7 +362,7 @@ export default {
 
   .sec-form {
     border-radius: 20px;
-    width: 100%;
+    width: 90%;
     border: 3px solid white;
     background-color: #523333;
     display: flex;
@@ -387,20 +387,14 @@ export default {
     }
   }
 
-  .sec-form {
-    .nperson {
-      width: 100%;
-    }
-  }
 
+ 
   .person {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 40%;
     margin: auto;
     font-size: 20px;
-
     gap: .5rem;
 
     .meno-person,
@@ -430,7 +424,7 @@ export default {
     background-color: #270000;
     border-radius: 20px;
     max-width: 450px;
-    width: 100%;
+    width: 90%;
     padding: 1rem;
     text-transform: uppercase;
     letter-spacing: 2px;

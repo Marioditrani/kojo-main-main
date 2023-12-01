@@ -435,7 +435,7 @@ export default {
   gap: 1rem;
   .sec-form{
   border-radius: 20px;
-  width: 100%;
+  width: 90%;
   border: 3px solid white;
   background-color: #523333;
   display: flex;
@@ -462,7 +462,7 @@ export default {
       background-color: #270000;
       border-radius: 20px;
       max-width: 450px;
-      width: 100%;
+      width: 90%;
       padding: 1rem;
       text-transform: uppercase;
       letter-spacing: 2px;
